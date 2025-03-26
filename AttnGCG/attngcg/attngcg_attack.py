@@ -115,7 +115,7 @@ class AttnGCGPromptManager(PromptManager):
     def sample_control(self, grad, mode, batch_size, topk=256, temp=1, allow_non_ascii=True):
 
         if not allow_non_ascii:
-            grad[:, self._nonascii_toks.to(grad.device)] = np.infty
+            grad[:, self._nonascii_toks.to(grad.device)] = np.inf
         top_indices = (-grad).topk(topk, dim=1).indices
         
         if mode == "control":
