@@ -226,6 +226,7 @@ class AttnGCGMultiPromptAttack(MultiPromptAttack):
                             for loss_info in loss_infos:
                                 for name, (weight, loss_i) in loss_info.items():
                                     loss[j * batch_size:(j + 1) * batch_size] += weight * loss_i.to(main_device)
+                                    print('AZERB')
                                     print(f'{name}_min: {loss_i.argmin()}, {loss_i.min()}')
                                
                         else:
@@ -247,12 +248,14 @@ class AttnGCGMultiPromptAttack(MultiPromptAttack):
                             ])
                             loss[j*batch_size:(j+1)*batch_size] += loss1
                             print(f'loss_target:{loss1.argmin()}, {loss1.min()}')
+                            print('AZERC')
                             loss2 = sum([
                                 attention_weight*self.prompts[k][i].attention_loss(attention).to(main_device) 
                                 for k, attention in enumerate(attns)
                             ])
                             loss[j*batch_size:(j+1)*batch_size] += loss2
                             print(f'loss_attention:{loss2.argmin()}, {loss2.min()}')
+                            print('AZERD')
                             
                             del logits, ids , attentions, loss1, loss2 ; gc.collect()
 
@@ -261,6 +264,7 @@ class AttnGCGMultiPromptAttack(MultiPromptAttack):
                     
                     index = loss[j * batch_size:(j + 1) * batch_size].argmin()
                     print(f'choose: {index}')
+                    print('AZERE')
                         
             losses.append(loss)
             
@@ -271,6 +275,7 @@ class AttnGCGMultiPromptAttack(MultiPromptAttack):
             batch_idx = min_idx % batch_size
             next_control, cand_loss = control_candses[0][model_idx][batch_idx], losses[0][min_idx]
             print('Current control length:', len(self.workers[0].tokenizer(next_control, add_special_tokens=False).input_ids))
+            print('AZERF')
             print(f"next_control: {next_control}")
             
         del control_candses, losses ; gc.collect()

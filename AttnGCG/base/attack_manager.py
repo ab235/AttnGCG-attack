@@ -421,6 +421,7 @@ class AttackPrompt(object):
             gen_config.max_new_tokens = self.test_new_toks
         gen_str = self.generate_str(model, gen_config).strip()
         print(gen_str)
+        print('AZERG')
         jailbroken = not any([prefix.lower() in gen_str.lower() for prefix in self.test_prefixes])
         process_fn_dict = {
             'process_fn0': lambda s: s,
@@ -447,6 +448,7 @@ class AttackPrompt(object):
         loss = -1
         for name, (weight, loss_i) in loss_info.items():
             print(f'{name}: {loss_i.argmin()}, {loss_i.min()}')
+            print('AZERH')
             if name == "target_loss":
                 loss = loss_i
         return loss.item()
@@ -562,6 +564,7 @@ class AttackPrompt(object):
                 output_ref = model(input_ids=ids, attention_mask=attn_mask, use_cache=True)
                 print((output_ref.logits[:, :ids_common_len] - output.logits).abs().max())
                 print((output_ref.logits[:, ids_common_len:] - output_rest.logits).abs().max())
+                print('AZERI')
                 res_ref = output_ref.logits
 
             if output_rest is None:
@@ -1125,6 +1128,7 @@ class MultiPromptAttack(object):
                 f"control='{control}'\n"
                 f"====================================================\n"
             ))
+            print('AZERJ')
 
 
 class ProgressiveMultiPromptAttack(object):
