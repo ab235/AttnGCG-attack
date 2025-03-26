@@ -614,9 +614,9 @@ class AttackPrompt(object):
         loss = torch.zeros(len(tmp_input)).to(attentions.device)
         for name, slices in slice_dict.items():
             if attention_pooling_method=='mean':
-                val = tmp_input[:, slices].mean(1).to(dtype=torch.float32)
+                val = tmp_input[:, slices].mean(1).to(dtype=torch.float16)
             elif attention_pooling_method=='sum':
-                val = tmp_input[:, slices].sum(1).to(dtype=torch.float32)
+                val = tmp_input[:, slices].sum(1).to(dtype=torch.float16)
             else:
                 raise ValueError(f"Invalid Attention_pooling_method, expect 'mean' or 'sum', get {attention_pooling_method}") 
             loss +=  val * weight_dict[name]

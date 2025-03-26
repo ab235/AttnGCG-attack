@@ -61,9 +61,9 @@ def token_gradients(model, input_ids, input_slice, target_slice, loss_slice, goa
     loss2 = torch.zeros(len(tmp_input)).to(attentions.device)
     for name, slices in slice_dict.items():
         if attention_pooling_method=='mean':
-            val = tmp_input[0, slices].mean().to(dtype=torch.float32)
+            val = tmp_input[0, slices].mean().to(dtype=torch.float16)
         elif attention_pooling_method=='sum':
-            val = tmp_input[0, slices].sum().to(dtype=torch.float32)
+            val = tmp_input[0, slices].sum().to(dtype=torch.float16)
         else:
             raise ValueError(f"Invalid Attention_pooling_method, expect 'mean' or 'sum', get {attention_pooling_method}") 
         loss2 +=  val * weight_dict[name]
