@@ -71,7 +71,7 @@ def token_gradients(model, input_ids, input_slice, target_slice, loss_slice, goa
     targets = input_ids[target_slice]
     loss1 = nn.CrossEntropyLoss()(logits[0,loss_slice,:], targets)
     loss = target_weight*loss1 + attention_weight*loss2
-    
+    print('PPPPPs')
     loss.backward()
     
     del x, logits, attentions, loss, loss1, loss2; gc.collect()
@@ -89,6 +89,7 @@ class AttnGCGAttackPrompt(AttackPrompt):
                 attention_pooling_method=None, 
                 attention_weight=None, 
                 attention_weight_dict=None):
+        print("checkgrad")
         if mode == "control":
             return token_gradients(
                 model, 

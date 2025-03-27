@@ -96,4 +96,5 @@ def main(_):
         total_step += inner_steps
 
 if __name__ == '__main__':
+    print('YESYESYES')
     app.run(main)
