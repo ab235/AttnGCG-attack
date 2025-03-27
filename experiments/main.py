@@ -17,8 +17,8 @@ def dynamic_import(module):
     return importlib.import_module(module)
 
 def main(_):    
-    mp.set_start_method('spawn')
     print('XXXXXXXXXXXXXXXXXXXXXX', flush=True)
+    mp.set_start_method('spawn')
     params = _CONFIG.value
     attack_lib = dynamic_import(f'AttnGCG.attngcg')
 
