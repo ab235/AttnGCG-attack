@@ -16,9 +16,9 @@ cd ../launch_scripts
 
 if [ ! -d $folder ]; then
     mkdir $folder
-    echo "Folder $folder created."
+    echo "Folder $folder created. WAIT WAIT WAIT"
 else
-    echo "Folder $folder already exists."
+    echo "Folder $folder already exists. WAIT WAIT WAIT"
 fi
 
 bash run_individual.sh $model $attack direct 10 $offset > ${folder}/${offset}.out &
