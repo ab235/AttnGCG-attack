@@ -15,9 +15,9 @@ export data_offset=$5
 # Create results folder if it doesn't exist
 if [ ! -d $folder ]; then
     mkdir $folder
-    echo "Folder ${folder} created."
+    echo "Folder ${folder} created. CHECK CHECK"
 else
-    echo "Folder ${folder} already exists."
+    echo "Folder ${folder} already exists. CHECK CHECK"
 fi
 
 python -u ../main.py \
