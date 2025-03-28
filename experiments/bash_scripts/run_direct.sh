@@ -21,6 +21,6 @@ else
     echo "Folder $folder already exists. WAIT WAIT WAIT"
 fi
 
-bash run_individual.sh $model $attack direct 10 $offset > ${folder}/${offset}.out 2>&1 &
+bash run_individual.sh $model $attack direct 10 $offset > ${folder}/${offset}.out
 
 wait
