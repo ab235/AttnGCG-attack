@@ -20,6 +20,8 @@ else
     echo "Folder ${folder} already exists. CHECK CHECK"
 fi
 
+echo "TESTING RUN_INDIVIDUAL.SH"
+
 python -u ../main.py \
     --config="../configs/individual_${model}.py" \
     --config.train_data="../../data/advbench/harmful_behaviors_${method}.csv" \
