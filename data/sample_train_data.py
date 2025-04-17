@@ -68,8 +68,8 @@ def main():
             test_dest[goal] = []
         with open(test_dest_path, 'w') as f:
             json.dump(test_dest, f, indent=4)    
-        for i in range(25):
-            test_indices.append(i)
+        #for i in range(25):
+            #test_indices.append(i)
         test_indices.sort()
         dest_data = data.iloc[test_indices]
         dest_data.to_csv(dest_csv_path, index=False,sep=',')
