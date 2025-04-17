@@ -61,7 +61,7 @@ def main():
         with open(train_dest_path, 'w') as f:
             json.dump(train_dest, f, indent=4)
         test_dest = {}
-        test_indices = random.sample(range(25, len(data['goal'])), test_number)
+        test_indices = random.sample(range(1, len(data['goal'])), test_number) #AB: turn back to 25 instead of 1
         all_goals = data['goal'].tolist()
         test_goals = [all_goals[i] for i in test_indices]
         for goal in test_goals:
