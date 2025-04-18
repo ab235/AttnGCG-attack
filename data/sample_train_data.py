@@ -32,7 +32,7 @@ def main():
         with open(dest_path, 'w') as f:
             json.dump(dest, f, indent=4)
     elif method == "direct":
-        number = 1
+        number = 10
         source_path = f"advbench/harmful_behaviors.csv"
         data = pd.read_csv(source_path)  
         dest_csv_path = f"advbench/harmful_behaviors_{method}.csv"
@@ -48,7 +48,7 @@ def main():
         with open(dest_path, 'w') as f:
             json.dump(dest, f, indent=4)
     elif method == "transfer":
-        test_number = 1
+        test_number = 10
         source_path = f"advbench/harmful_behaviors.csv"
         data = pd.read_csv(source_path) 
         dest_csv_path = f"advbench/harmful_behaviors_{method}.csv"
