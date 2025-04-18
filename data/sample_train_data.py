@@ -32,7 +32,7 @@ def main():
         with open(dest_path, 'w') as f:
             json.dump(dest, f, indent=4)
     elif method == "direct":
-        number = 100
+        number = 1
         source_path = f"advbench/harmful_behaviors.csv"
         data = pd.read_csv(source_path)  
         dest_csv_path = f"advbench/harmful_behaviors_{method}.csv"
@@ -48,7 +48,7 @@ def main():
         with open(dest_path, 'w') as f:
             json.dump(dest, f, indent=4)
     elif method == "transfer":
-        test_number = 100
+        test_number = 1
         source_path = f"advbench/harmful_behaviors.csv"
         data = pd.read_csv(source_path) 
         dest_csv_path = f"advbench/harmful_behaviors_{method}.csv"
@@ -61,15 +61,15 @@ def main():
         with open(train_dest_path, 'w') as f:
             json.dump(train_dest, f, indent=4)
         test_dest = {}
-        test_indices = random.sample(range(25, len(data['goal'])), test_number) #AB: turn back to 25 instead of 1
+        test_indices = random.sample(range(0, len(data['goal'])), test_number) #AB: turn back to 25 instead of 1
         all_goals = data['goal'].tolist()
         test_goals = [all_goals[i] for i in test_indices]
         for goal in test_goals:
             test_dest[goal] = []
         with open(test_dest_path, 'w') as f:
             json.dump(test_dest, f, indent=4)    
-        for i in range(25):
-            test_indices.append(i)
+        #for i in range(25):
+            #test_indices.append(i)
         test_indices.sort()
         dest_data = data.iloc[test_indices]
         dest_data.to_csv(dest_csv_path, index=False,sep=',')
